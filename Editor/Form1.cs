@@ -16,6 +16,7 @@ namespace Editor
         {
             InitializeComponent();
         }
+
         private RichTextBox GetTextBox()
         {
             RichTextBox rtb = null;
@@ -28,7 +29,16 @@ namespace Editor
             return rtb;
         }
 
-        private void creatToolStripMenuItem_Click(object sender, EventArgs e)
+        //private void openToolStripMenuItem3_Click(object sender, EventArgs e)
+        //{
+        //    if (ofd.ShowDialog() == DialogResult.OK && ofd.FileName.Length > 0)
+        //    {
+        //        Form2 frm = new Form2 { MdiParent = this, path = ofd.FileName };
+        //        frm.Show();
+        //    }
+        //}
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form2 frm = new Form2 { MdiParent = this };
             frm.Show();
@@ -43,7 +53,7 @@ namespace Editor
             }
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (GetTextBox() == null)
                 return;
@@ -51,20 +61,6 @@ namespace Editor
             if (sfd.ShowDialog() == DialogResult.OK && sfd.FileName.Length > 0)
             {
                 GetTextBox().SaveFile(sfd.FileName, RichTextBoxStreamType.PlainText);
-            }
-        }
-
-        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (ActiveMdiChild != null)
-                ActiveMdiChild.Close();
-        }
-
-        private void closeAllToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (Form form in MdiChildren)
-            {
-                form.Close();
             }
         }
 
@@ -78,7 +74,7 @@ namespace Editor
             GetTextBox().Copy();
         }
 
-        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void pasteToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             GetTextBox().Paste();
         }
@@ -86,6 +82,25 @@ namespace Editor
         private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GetTextBox().SelectAll();
+        }
+
+        private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            foreach (Form form in MdiChildren)
+            {
+                form.Close();
+            }
+        }
+
+        private void closeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (ActiveMdiChild != null)
+                ActiveMdiChild.Close();
+        }
+
+        private void customizeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

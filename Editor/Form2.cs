@@ -18,11 +18,13 @@ namespace Editor
             InitializeComponent();
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            if (path != null)
-                TextBox.LoadFile(path, RichTextBoxStreamType.PlainText);
-        }
+            FontDialog fontDlg = new FontDialog();
+            fontDlg.Font = richTextBoxText.Font;
 
+            if (fontDlg.ShowDialog() == DialogResult.OK)
+                richTextBoxText.Font = fontDlg.Font;
+        }
     }
 }
